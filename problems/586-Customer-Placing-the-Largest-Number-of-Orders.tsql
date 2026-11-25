@@ -1,0 +1,7 @@
+/* Write your T-SQL query statement below */
+SELECT top(1) customer_number
+FROM (  SELECT customer_number, COUNT(order_number) AS co
+        FROM orders
+        GROUP BY customer_number        
+    ) AS t
+ORDER BY co DESC
