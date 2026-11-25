@@ -1,0 +1,7 @@
+/* Write your T-SQL query statement below */
+SELECT email 
+FROM (  SELECT email, COUNT(email) AS ce
+        FROM Person
+        GROUP BY email    
+    ) AS newTable
+WHERE ce > 1;
