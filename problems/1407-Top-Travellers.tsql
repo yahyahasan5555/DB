@@ -1,0 +1,17 @@
+SELECT U.name,
+        ISNULL(SUM(R.distance), 0) AS travelled_distance
+FROM Users U
+    LEFT OUTER JOIN Rides R
+        ON U.id = R.user_id
+Group by U.id, U.name
+ORDER BY travelled_distance DESC, U.name ASC
+
+/*
+SELECT   name, ISNULL(travelled_distance, 0) AS travelled_distance
+FROM (  SELECT name, SUM(distance) AS travelled_distance
+        FROM Users U LEFT JOIN Rides R
+            ON U.id = R.user_id
+        GROUP BY user_id, name
+    ) AS newTable
+ORDER BY travelled_distance DESC, name ASC
+*/
