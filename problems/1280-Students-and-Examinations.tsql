@@ -1,0 +1,5 @@
+/* Write your T-SQL query statement below */
+SELECT S.student_id, S.student_name, Sub.subject_name, ISNULL(COUNT(E.subject_name), 0)AS attended_exams
+FROM Students S CROSS JOIN Subjects Sub
+LEFT JOIN Examinations E ON Sub.subject_name = E.subject_name AND S.student_id = E.student_id
+GROUP BY S.student_id, S.student_name, Sub.subject_name
